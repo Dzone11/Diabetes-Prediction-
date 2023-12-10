@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .result-diabetic {
+            color: #d9534f;
+        }
+
+        .result-not-diabetic {
+            color: #5bc0de;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetes Prediction Result</h1>
+        
+        {% if result is defined and result is not none %}
+            <p class="{% if result == 1 %}result-diabetic{% else %}result-not-diabetic{% endif %}">
+                {% if result == 1 %}
+                    The person is Diabetic.
+                {% else %}
+                    The person is Not Diabetic.
+                {% endif %}
+            </p>
+        {% endif %}
+
+        <h1>Enter Features for Prediction</h1>
+        <form method="post" action="/predict">
+            <label for="pregnancies">Pregnancies:</label>
+            <input type="number" id="pregnancies" name="pregnancies" required><br>
+
+            <label for="glucose">Glucose:</label>
+            <input type="number" id="glucose" name="glucose" required><br>
+
+            <label for="blood_pressure">Blood Pressure:</label>
+            <input type="number" id="blood_pressure" name="blood_pressure" required><br>
+
+            <label for="skin_thickness">Skin Thickness:</label>
+            <input type="number" id="skin_thickness" name="skin_thickness" required><br>
+
+            <label for="insulin">Insulin:</label>
+            <input type="number" id="insulin" name="insulin" required><br>
+
+            <label for="bmi">BMI:</label>
+            <input type="number" step="0.01" id="bmi" name="bmi" required><br>
+
+            <label for="diabetes_pedigree_function">Diabetes Pedigree Function:</label>
+            <input type="number" step="0.01" id="diabetes_pedigree_function" name="diabetes_pedigree_function" required><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+</html>
