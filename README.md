@@ -29,7 +29,7 @@ pip install -r requirements.txt
 Run the Jupyter Notebook train_model.ipynb:
 
 Train the machine learning model and save it as diabetes_prediction_model.pkl.
-Usage
+
 Run the Flask application:
 
 
